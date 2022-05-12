@@ -1,0 +1,166 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Helvetica Neue";
+  background-color: #f2f2f7;
+}
+
+body > div {
+  margin: auto;
+}
+#toast{
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 999999999999;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 15px 10px;
+  border-radius: 2px;
+  border-left: 4px solid #000;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
+  min-width: 400px;
+  max-width: 500px;
+  /* Amination */
+  transition: all linear 0.3s;
+} 
+/* Keyfarm hiện từ trái sang*/
+@keyframes slideInLeft {
+    from{
+      opacity: 0;
+      transform: translateX(calc(100% + 32px));
+    }to{
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+/* Keyfarmes ẩn dần đi */
+@keyframes fadeOut {
+  to{
+    opacity: 0;
+  }
+}
+/* Color boder & icon */
+.toast--success {
+  border-color: green;
+}
+.toast--success .toast__icon{
+  color: green;
+}
+.toast--info {
+  border-color: blue;
+}
+.toast--info .toast__icon{
+  color: blue;
+}
+.toast--error {
+  border-color: red;
+}
+.toast--error .toast__icon{
+  color: red;
+}
+
+.toast + .toast{
+  margin-top: 24px;
+}
+.toast__icon {
+  font-size: 24px;
+  margin-right: 15px;
+}
+.toast__body {
+  flex-grow: 1;
+}
+
+.toast__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+} 
+
+.toast_msg {
+  font-size: 14px;
+  color: #888;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.toast__close {
+  margin-left: 15px;
+  color: gray;
+  cursor: pointer;
+}
+
+/* =====Button==== */
+.btn {
+  /* Loại bỏ vấn đề thẻ div */
+  display: inline-block;
+  /* Loại bỏ vấn đề thẻ a */
+  text-decoration: none;
+  /* Loại bỏ vấn đề thẻ button:
+    background-color: transparent;-> Trong suốt
+    outline: none;
+  */
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  /* Căn chỉnh box */
+  padding: 10px 35px;
+  border-radius: 15px;
+  /* 
+  cursor: pointer; -> Di chuột vào tạo thành sự lựa chọn
+  transition: opacity 0.2s ease; -> Sự thay đổi: 
+  thuộc_tính thời_gian hiệu_ứng(liner,ease)
+   */
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  /* Chiều dài tối thiểu */
+  min-width: 120px;
+}
+
+.btn:hover {
+  /* Độ đục của màu */
+  opacity: 0.8;
+}
+/* Modifier */
+.btn--size-l {
+  padding: 15px 40px;
+}
+
+.btn--size-s {
+  padding: 5px 30px;
+}
+
+/* Căn chỉnh 2 thuộc tính cạnh nhau đẩy sang trái, phải... */
+.btn + .btn {
+  margin-left: 30px;
+}
+
+.btn--success {
+  background-color: #70be34;
+}
+.btn--info {
+  background-color: #ffb703;
+}
+.btn--error {
+  background-color: #fe633c;
+}
+
+/* Không thể bấm được: Disable */
+.btn--disabled {
+  opacity: 0.5 !important;
+  cursor: default;
+}
+
